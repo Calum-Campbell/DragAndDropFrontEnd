@@ -6,3 +6,12 @@
   line-height: 300px;
   text-align: center;
 }
+
+.dragover {
+ width: 200px;
+ height:200px;
+ border: 2px dashed black;
+ color: blue;
+ line-height: 300px;
+ text-align: center; 
+}
