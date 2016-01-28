@@ -19,8 +19,11 @@ DragAndDrop.go = function(){
   })
 
   dropzone.on('drop', function(drop){
-
     drop.preventDefault();
+
+    var files = drop.originalEvent.dataTransfer.files;
+
+    handleDroppedFiles(files)
   })
 
   //Prevent file opening in browser
@@ -41,3 +44,16 @@ DragAndDrop.go = function(){
     drop.preventDefault();
   });
 
+/// Handle dropped files
+
+function handleDroppedFiles(files){
+
+ for (var i = 0; i < files.length; i++) 
+  {
+  var data = new FormData();
+  data.append('file', files[i]); 
+  console.log(data)    
+  }
+}
+
+}
