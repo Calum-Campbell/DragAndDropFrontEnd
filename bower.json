@@ -1,0 +1,21 @@
+{
+  "name": "DragAndDropFrontEnd",
+  "homepage": "https://github.com/Calum-Campbell/DragAndDropFrontEnd",
+  "authors": [
+    "Calum-Campbell <campbell.cj@hotmail.co.uk>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0"
+  }
+}
