@@ -49,11 +49,49 @@ DragAndDrop.go = function(){
 function handleDroppedFiles(files){
 
  for (var i = 0; i < files.length; i++) 
-  {
+ {
   var data = new FormData();
   data.append('file', files[i]); 
-  console.log(data)    
-  }
+
+  sendFileToServer(data);
 }
+}
+
+//send form data to server using AJAX
+function sendFileToServer(data){
+  var uploadURL ="yourUploadUrl"; //Upload URL
+    var extraData ={}; //Extra Data.
+    var jqXHR=$.ajax({
+      xhr: function() {
+        var xhrobj = $.ajaxSettings.xhr();
+        if (xhrobj.upload) {
+          xhrobj.upload.addEventListener('progress', function(event) {
+            var percent = 0;
+            var position = event.loaded || event.loaded;
+            var total = event.total;
+            if (event.lengthComputable) {
+              percent = Math.ceil(position / total * 100);
+            }
+                        //Set progress
+                        // status.setProgress(percent);
+                      }, false);
+        }
+        return xhrobj;
+      },
+      url: uploadURL,
+      type: "POST",
+      contentType:false,
+      processData: false,
+      cache: false,
+      data: data,
+      success: function(data){
+        status.setProgress(100);
+
+            //$("#status1").append("File upload Done<br>");           
+          }
+        }); 
+
+    // status.setAbort(jqXHR);
+  }
 
 }
