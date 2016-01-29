@@ -117,9 +117,7 @@ function sendFileToServer(data){
             if (event.lengthComputable) {
               percent = Math.ceil(position / total * 100);
             }
-                        //Set progress
-                        // status.setProgress(percent);
-                      }, false);
+          }, false);
         }
         return xhrobj;
       },
@@ -130,14 +128,11 @@ function sendFileToServer(data){
       cache: false,
       data: data,
       success: function(data){
-        status.setProgress(100);
-
-            //$("#status1").append("File upload Done<br>");           
-          }
-        }); 
-
-    // status.setAbort(jqXHR);
+      console.log(data)          }
+    }); 
   }
 
 ```
+
+
 

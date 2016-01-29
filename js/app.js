@@ -10,19 +10,21 @@ DragAndDrop.go = function(){
   dropzone.on('dragenter', function(enter){
     enter.stopPropagation();
     enter.preventDefault();
+    this.className = 'dropzone dragover'
     console.log("dragged in")
   });
 
   dropzone.on('dragover', function(over){
     over.stopPropagation();
     over.preventDefault();
+    console.log('dragover')
+    this.className = 'dropzone dragover'
   })
 
   dropzone.on('drop', function(drop){
-    drop.preventDefault();
+    drop.preventDefault();//stop file opening in browser
 
     var files = drop.originalEvent.dataTransfer.files;
-
     handleDroppedFiles(files)
   })
 
@@ -47,14 +49,22 @@ DragAndDrop.go = function(){
 /// Handle dropped files
 
 function handleDroppedFiles(files){
+  var data = new FormData();
+  var xhr = new XMLHttpRequest();
 
  for (var i = 0; i < files.length; i++) 
- {
-  var data = new FormData();
+ {  
   data.append('file', files[i]); 
-
-  sendFileToServer(data);
+  // sendFileToServer(data);
 }
+
+  xhr.onload = function(){
+    var datad = this.responseText;
+    console.log(datad)
+  }
+
+  xhr.open('post', 'upload.php');
+  xhr.send(data)
 }
 
 //send form data to server using AJAX
@@ -72,9 +82,7 @@ function sendFileToServer(data){
             if (event.lengthComputable) {
               percent = Math.ceil(position / total * 100);
             }
-                        //Set progress
-                        // status.setProgress(percent);
-                      }, false);
+          }, false);
         }
         return xhrobj;
       },
@@ -85,13 +93,9 @@ function sendFileToServer(data){
       cache: false,
       data: data,
       success: function(data){
-        status.setProgress(100);
-
-            //$("#status1").append("File upload Done<br>");           
-          }
-        }); 
-
-    // status.setAbort(jqXHR);
+      console.log(data)          }
+    }); 
   }
+
 
 }
