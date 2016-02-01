@@ -11,13 +11,11 @@ DragAndDrop.go = function(){
     enter.stopPropagation();
     enter.preventDefault();
     this.className = 'dropzone dragover'
-    console.log("dragged in")
   });
 
   dropzone.on('dragover', function(over){
     over.stopPropagation();
     over.preventDefault();
-    console.log('dragover')
     this.className = 'dropzone dragover'
   })
 
@@ -26,8 +24,20 @@ DragAndDrop.go = function(){
 
     var files = drop.originalEvent.dataTransfer.files;
     handleDroppedFiles(files)
+    displayDroppedFiles(files)
   })
 
+  function  displayDroppedFiles(files){
+    console.log(files)
+    $( ".uploads" ).append( "<p>"+files[0].name+"</p>" );
+  }
+
+  var form = $('#fileForm');
+
+  form.submit(function(click){
+    click.preventDefault();
+    // handleDroppedFiles(click)
+  })
   //Prevent file opening in browser
 
   $(document).on('dragenter', function (enter) 
@@ -52,19 +62,19 @@ function handleDroppedFiles(files){
   var data = new FormData();
   var xhr = new XMLHttpRequest();
 
- for (var i = 0; i < files.length; i++) 
- {  
-  data.append('file', files[i]); 
+  for (var i = 0; i < files.length; i++) 
+  {  
+    data.append('file', files[i]); 
   // sendFileToServer(data);
 }
 
-  xhr.onload = function(){
-    var datad = this.responseText;
-    console.log(datad)
-  }
+xhr.onload = function(){
+  var datad = this.responseText;
+  console.log(datad)
+}
 
-  xhr.open('post', 'upload.php');
-  xhr.send(data)
+xhr.open('post', 'upload.php');
+xhr.send(data)
 }
 
 //send form data to server using AJAX
@@ -93,8 +103,8 @@ function sendFileToServer(data){
       cache: false,
       data: data,
       success: function(data){
-      console.log(data)          }
-    }); 
+        console.log(data)          }
+      }); 
   }
 
 

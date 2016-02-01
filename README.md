@@ -1,8 +1,11 @@
 # DragAndDropFrontEnd
 Front End Drag and Drop Page
 
+1. Process
+2. Still to do 
 
-## Process
+
+## 1. Process
 
 ### Set up Boilerplate
 1. wdi-london-alumni
@@ -136,4 +139,9 @@ function sendFileToServer(data){
 #### Add css
 1. Edited and added some front end css 
 
-
+#### ToDo
+1. Add in php upload to server file<br>
+I need to add in a php upload to server file. 
+2. need to add in the js for sending the file when not added via drag and drop
+3. I would also include SASS css with more time
+4. Would concentrate on the repsonsive design as well which I didnt get a chance to get onto.

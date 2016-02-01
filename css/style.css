@@ -20,9 +20,14 @@ html, body {
 #dropzone:hover{
  transform: rotate(20deg);
  -webkit-transform: rotate(20deg);
-
 }
 
+.uploads{
+  color: #FFEA00;
+}
+.btn-lg{
+  background-color: #FFEA00'
+}
 .row {
   background-color: #252525;
 }
