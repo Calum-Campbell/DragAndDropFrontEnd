@@ -133,6 +133,7 @@ function sendFileToServer(data){
   }
 
 ```
-
+#### Add css
+1. Edited and added some front end css 
 
 
